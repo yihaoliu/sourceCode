@@ -16,24 +16,26 @@
 
     // these helpers produces better vm code in JS engines due to their
     // explicitness and function inlining
+    //判断是否等于undefined 或者 等于null
     function isUndef(v) {
         return v === undefined || v === null
     }
-
+    //判断元素存在
     function isDef(v) {
         return v !== undefined && v !== null
     }
-
+     //是否存在
     function isTrue(v) {
         return v === true
     }
-
+    //是否为false
     function isFalse(v) {
         return v === false
     }
 
     /**
      * Check if value is primitive
+     * 是否是原始类型
      */
     function isPrimitive(value) {
         return (
@@ -56,9 +58,10 @@
 
     /**
      * Get the raw type string of a value e.g. [object Object]
+     *   //返回类型
      */
     var _toString = Object.prototype.toString;
-
+  
     function toRawType(value) {
         return _toString.call(value).slice(8, -1)
     }
@@ -66,17 +69,21 @@
     /**
      * Strict object type check. Only returns true
      * for plain JavaScript objects.
+     * 是否是对象类型
      */
+
     function isPlainObject(obj) {
         return _toString.call(obj) === '[object Object]'
     }
-
+    //是否是正则类型
     function isRegExp(v) {
         return _toString.call(v) === '[object RegExp]'
     }
 
     /**
      * Check if val is a valid array index.
+     * 检查val是否是一个有效的数组索引。
+     * isFinite 判断某值是否是无限大
      */
     function isValidArrayIndex(val) {
         var n = parseFloat(String(val));
@@ -123,11 +130,13 @@
 
     /**
      * Check if a tag is a built-in tag.
+     * 检查标签是否为内置标签。
      */
     var isBuiltInTag = makeMap('slot,component', true);
 
     /**
      * Check if a attribute is a reserved attribute.
+     * 检查属性是否是保留属性。
      */
     var isReservedAttribute = makeMap('key,ref,slot,slot-scope,is');
 
